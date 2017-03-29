@@ -54,7 +54,7 @@
     D=M
     @KBD
     D=A-D
-    @BLACK
+    @WHITE
     D;JGT
     @LOOP
     0;JMP
