@@ -10,7 +10,7 @@ class code(object):
                    'M-1': '1110010', 'D+M': '1000010', 'D-M': '1010011', 'M-D': '1000111',
                    'D&M': '1000000', 'D|M': '1010101'}
 
-    jump_num = {'null':'000', 'JGT':'001', 'JEQ':'010', 'JGE':'011', 'JLT':'100', 'JNE':'101', 'JLE':'110', 'JMP':'111'}
+	jump_num = {'null':'000', 'JGT':'001', 'JEQ':'010', 'JGE':'011', 'JLT':'100', 'JNE':'101', 'JLE':'110', 'JMP':'111'}
 
 	def dest(self, mnemonic):
 		return self.dest_num[mnemonic]
@@ -18,5 +18,5 @@ class code(object):
 	def comp(self, mnemonic):
 		return self.comp_num[mnemonic]
 
-	def jump(self, mnemonic)
+	def jump(self, mnemonic):
 		return self.jump_num[mnemonic]

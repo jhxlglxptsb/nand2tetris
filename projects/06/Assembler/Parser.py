@@ -1,3 +1,5 @@
+#Parser.py
+
 import re
 
 A_COMMAND = 0
@@ -6,33 +8,30 @@ L_COMMAND = 2
 
 class parser(object):
     def __init__(self, myfile):
-    	self.file = re.open(myfile)
-    	self.rawcommands = file.readlines()
+    	self.file = open(myfile, 'r')
+    	self.rawcommands = self.file.readlines()
     	self.commands = []
-   		self.mydeal()
+    	self.mydeal()
     	self.start = 0
     	self.curcmd = ''
     	self.symbol = ''
-
-    def run(self):
-    	if hasMoreCommands():
-    		self.curcmd = self.advance()
 
     def hasMoreCommands(self):
     	return self.start<len(self.commands)
 
     def advance(self):
-    	return self.commands[self.start++]
+    	self.curcmd = self.commands[self.start]
+    	self.start += 1
 
     def commandType(self):
-    	if self.curcmd.find('@'):
+    	if '@' in self.curcmd: 
     		return A_COMMAND
-    	elif self.curcmd.find('('):
+    	elif '(' in self.curcmd:
     		return L_COMMAND
     	else:
     		return C_COMMAND
 
-    def symbol(self):
+    def symbols(self):
     	return re.sub(r'\(|\)|@', '', self.curcmd)
 
     def dest(self):
@@ -56,7 +55,7 @@ class parser(object):
     		pattern = re.compile("(.*);")
     		res = pattern.search(self.curcmd).groups()
     		return res[0]
-    	else
+    	else:
     		return self.curcmd
 
     def jump(self):
@@ -66,7 +65,6 @@ class parser(object):
     		return res[0]
     	else:
     		return 'null'
-
 
     def mydeal(self):
     	for bar in self.rawcommands:
